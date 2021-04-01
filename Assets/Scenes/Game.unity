@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 697447043}
-  speed: 5
+  field: {fileID: 1109003031}
+  speed: 1
 --- !u!54 &687653926
 Rigidbody:
   m_ObjectHideFlags: 0

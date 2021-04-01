@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 public class Sheep : MonoBehaviour
 {
     public GameObject food;
+    public GameObject field;
     public float speed = 5f;
 
     Rigidbody rigid;
@@ -14,6 +15,13 @@ public class Sheep : MonoBehaviour
 	    rigid = GetComponent<Rigidbody>();
         if (!food) {
             Debug.LogError("Food is not set.");
+        }
+        if (!field) {
+            Debug.LogError("Field is not set.");
+        }
+
+        if (food) {
+	        food.GetComponent<Food>().Respawn(transform.position, speed);
         }
     }
 
