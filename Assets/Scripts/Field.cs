@@ -9,7 +9,7 @@ public class Field : MonoBehaviour {
 	Renderer _renderer;
 	
 	int _size = 10;
-	public int Size {
+	public int size {
 		get => _size;
 		set {
 			if (value < MIN_SIZE) {
@@ -21,15 +21,18 @@ public class Field : MonoBehaviour {
 			var scale = value / 10f;
 			transform.localScale = new Vector3(scale, 1, scale);
 			_renderer.material.mainTextureScale = new Vector2(scale, scale);
+			_size = value;
 		}
 	}
 	
+	public Bounds bounds => _renderer.bounds;
+	
 	public bool Contains(Vector2 point) {
-		return _renderer.bounds.Contains(new Vector3(point.x, transform.position.y, point.y));
+		return bounds.Contains(new Vector3(point.x, transform.position.y, point.y));
 	}
 	
-	void Start() {
+	void Awake() {
 		_renderer = GetComponent<Renderer>();
-		Size = 15;
+		size = 15;
 	}
 }

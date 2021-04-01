@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class Sheep : MonoBehaviour {
     public GameObject food;
-    public GameObject field;
     public float speed = 5f;
 
     Rigidbody rigid;
@@ -15,19 +14,11 @@ public class Sheep : MonoBehaviour {
         if (!food) {
             Debug.LogError("Food is not set.", this);
         }
-        if (!field) {
-            Debug.LogError("Field is not set.", this);
-        }
-
-        // if (food) {
-	       //  food.GetComponent<Food>().Respawn(transform.position, speed);
-        // }
     }
 
     void FixedUpdate() {
         if (!food) return;
         var foodDirection = food.transform.position;
-        foodDirection.y = transform.position.y;
         transform.LookAt(foodDirection);
         rigid.MovePosition(transform.position + Time.deltaTime * speed * transform.forward);
     }

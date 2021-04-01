@@ -10,8 +10,14 @@ public class FoodController : MonoBehaviour
 	const float MIN_RADIUS = 1f;
 	
 	public Field field;
-	
-	private Vector2 Cartesian(Vector3 center, float radius, float angle) {
+
+	void OnValidate() {
+		if (!field) {
+			Debug.LogError("Field is not set.", this);
+		}
+	}
+
+	Vector2 Cartesian(Vector3 center, float radius, float angle) {
 		return new Vector2(center.x + radius * Mathf.Cos(angle), center.z + radius * Mathf.Sin(angle));
 	}
 
@@ -27,15 +33,15 @@ public class FoodController : MonoBehaviour
 		while (true) {
 			point = Cartesian(center, radius, angle);
 			
+			/* rotate food 90 degrees around the sheep when the point was generated outbounds */
 			var i = 0;
 			for (; !field.Contains(point) && i < 3; ++i) {
 				angle += Mathf.PI / 2;
 				point = Cartesian(center, radius, angle);
-				Debug.Log($"Rot {i}");
 			}
 			if (i < 3) break;
+			/* in rare case when the field is too small for the sheep, shrink radius and try again */
 			radius = Mathf.Max(radius / 2, MIN_RADIUS);
-			Debug.Log("Shrink");
 		}
 
 		food.transform.position = new Vector3(point.x, food.transform.position.y, point.y);
