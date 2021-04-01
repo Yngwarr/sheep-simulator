@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Sheep : MonoBehaviour
-{
+public class Sheep : MonoBehaviour {
     public GameObject food;
     public GameObject field;
     public float speed = 5f;
@@ -14,10 +13,10 @@ public class Sheep : MonoBehaviour
     void Start() {
 	    rigid = GetComponent<Rigidbody>();
         if (!food) {
-            Debug.LogError("Food is not set.");
+            Debug.LogError("Food is not set.", this);
         }
         if (!field) {
-            Debug.LogError("Field is not set.");
+            Debug.LogError("Field is not set.", this);
         }
 
         if (food) {
