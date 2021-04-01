@@ -16,6 +16,7 @@ public class EnhancedSlider : MonoBehaviour
 		if (!slider || !input) return;
 		input.onEndEdit.AddListener(UpdateSlider);
 		slider.onValueChanged.AddListener(UpdateInput);
+		input.text = ((int) slider.value).ToString();
 	}
 	
 	void OnValidate() {

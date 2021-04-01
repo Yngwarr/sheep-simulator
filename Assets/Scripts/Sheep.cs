@@ -19,9 +19,9 @@ public class Sheep : MonoBehaviour {
             Debug.LogError("Field is not set.", this);
         }
 
-        if (food) {
-	        food.GetComponent<Food>().Respawn(transform.position, speed);
-        }
+        // if (food) {
+	       //  food.GetComponent<Food>().Respawn(transform.position, speed);
+        // }
     }
 
     void FixedUpdate() {

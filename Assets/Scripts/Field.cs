@@ -10,7 +10,7 @@ public class Field : MonoBehaviour {
 	
 	int _size = 10;
 	public int Size {
-		get { return _size; }
+		get => _size;
 		set {
 			if (value < MIN_SIZE) {
 				value = MIN_SIZE;
@@ -22,6 +22,10 @@ public class Field : MonoBehaviour {
 			transform.localScale = new Vector3(scale, 1, scale);
 			_renderer.material.mainTextureScale = new Vector2(scale, scale);
 		}
+	}
+	
+	public bool Contains(Vector2 point) {
+		return _renderer.bounds.Contains(new Vector3(point.x, transform.position.y, point.y));
 	}
 	
 	void Start() {
