@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Sheep : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class Sheep : MonoBehaviour
 
     void FixedUpdate() {
         if (!food) return;
-        transform.LookAt(food.transform);
+        var foodDirection = food.transform.position;
+        foodDirection.y = transform.position.y;
+        transform.LookAt(foodDirection);
         rigid.MovePosition(transform.position + Time.deltaTime * speed * transform.forward);
     }
 }
