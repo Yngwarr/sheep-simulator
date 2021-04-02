@@ -8,15 +8,32 @@ using UnityEngine.UI;
 
 public class EnhancedSlider : MonoBehaviour
 {
+	public int defaultValue = 0;
+	public int initialMinValue = 0;
+	public int initialMaxValue = 100;
+	
 	public Slider slider;
 	public TMP_InputField input;
 	public UnityEvent<int> onValueChanged;
 	
-	void Start() {
-		if (!slider || !input) return;
-		input.onEndEdit.AddListener(UpdateSlider);
-		slider.onValueChanged.AddListener(UpdateInput);
-		input.text = ((int) slider.value).ToString();
+	public int value {
+		get => (int) slider.value;
+		/* doesn't invoke onValueChanged to avoid recursion */
+		set {
+			slider.value = value;
+			/* slider will automatically cap its value to its bounds */
+			input.text = ((int) slider.value).ToString();
+		}
+	}
+	
+	public int minValue {
+		get => (int) slider.minValue;
+		set => slider.minValue = value;
+	}
+	
+	public int maxValue {
+		get => (int) slider.maxValue;
+		set => slider.maxValue = value;
 	}
 	
 	void OnValidate() {
@@ -26,6 +43,16 @@ public class EnhancedSlider : MonoBehaviour
 		if (!input) {
 			Debug.LogError("Input is not set.", this);
 		}
+	}
+	
+	void Start() {
+		if (!slider || !input) return;
+		input.onEndEdit.AddListener(UpdateSlider);
+		slider.onValueChanged.AddListener(UpdateInput);
+		
+		minValue = initialMinValue;
+		maxValue = initialMaxValue;
+		value = defaultValue;
 	}
 	
 	void UpdateSlider(string value) {

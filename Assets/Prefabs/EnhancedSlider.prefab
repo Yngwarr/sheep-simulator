@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 78.270996, y: 0}
+  m_SizeDelta: {x: 228, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3074357676363748627
 MonoBehaviour:
@@ -50,8 +50,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e2b85c7082f084e98e51e42940dd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultValue: 0
+  initialMinValue: 0
+  initialMaxValue: 100
   slider: {fileID: 3074357676903184886}
   input: {fileID: 3074357676972051427}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3074357676532336638
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,10 +203,10 @@ RectTransform:
   m_Father: {fileID: 3074357676363748626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198.5, y: 2}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 147.8, y: -18.2}
+  m_SizeDelta: {x: 160, y: 21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3074357676903184886
 MonoBehaviour:
@@ -374,10 +380,10 @@ RectTransform:
   m_Father: {fileID: 3074357676363748626}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 88.5, y: 2}
-  m_SizeDelta: {x: 50, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 34.699997, y: -18.1}
+  m_SizeDelta: {x: 62.709106, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3074357676972051425
 CanvasRenderer:
@@ -656,7 +662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 500000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
