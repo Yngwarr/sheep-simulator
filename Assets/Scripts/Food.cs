@@ -10,11 +10,13 @@ public class Food : MonoBehaviour {
 	void Start() {
 		ctrl = GetComponentInParent<FoodController>();
 	}
-	
-    void OnTriggerEnter(Collider other) {
+
+	void OnTriggerEnter(Collider other) {
 	    var sheep = other.gameObject.GetComponent<Sheep>();
 	    if (!sheep) return;
 	    if (sheep.food != gameObject) return;
+	    
+	    EventManager.Get().foodEaten.Invoke(transform.position);
 	    ctrl.Respawn(this, sheep);
     }
 }

@@ -7,7 +7,7 @@ public class Sheep : MonoBehaviour {
     public float speed = 5f;
 
     Rigidbody rigid;
-    
+
     // Start is called before the first frame update
     void Start() {
 	    rigid = GetComponent<Rigidbody>();

@@ -31,8 +31,8 @@ public class SheepController : MonoBehaviour
 	}
 	
 	void Start() {
-		field.size = 100;
-		for (var i = 0; i < 5000; ++i) {
+		field.size = 10;
+		for (var i = 0; i < 5; ++i) {
 			Spawn();
 		}
 	}
