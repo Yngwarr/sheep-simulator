@@ -20,6 +20,9 @@ public class Sheep : GameComponent {
         if (!food) return;
         var foodDirection = food.transform.position;
         transform.LookAt(foodDirection);
-        rigid.MovePosition(transform.position + Time.fixedDeltaTime * speed * transform.forward);
+        
+        var step = Time.fixedDeltaTime * speed;
+        var foodDist = Vector3.Distance(transform.position, food.transform.position);
+        rigid.MovePosition(transform.position + (step < foodDist ? step : (foodDist)) * transform.forward);
     }
 }

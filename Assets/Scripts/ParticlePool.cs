@@ -10,6 +10,7 @@ public class ParticlePool : GameComponent
 	
 	List<ParticleSystem> free = new List<ParticleSystem>();
 	int size = 0;
+	bool on = false;
 	
 	void Start() {
 		EventManager.Get().foodEaten.AddListener(Spawn);
@@ -30,6 +31,7 @@ public class ParticlePool : GameComponent
 	}
 	
 	void Spawn(Vector3 position) {
+		if (!on) return;
 		ParticleSystem particle;
 		if (free.Count > 0) {
 			particle = free.Last();

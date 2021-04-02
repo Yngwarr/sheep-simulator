@@ -42,6 +42,9 @@ public class SimulationController : GameComponent
 	}
 	
 	public void SetSimulationSpeed(float multiplier) {
+#if UNITY_EDITOR
+		if (multiplier > 100f) multiplier = 100f;
+#endif
 		Time.timeScale = multiplier;
 		Time.fixedDeltaTime = defaultDeltaTime * multiplier;
 	}

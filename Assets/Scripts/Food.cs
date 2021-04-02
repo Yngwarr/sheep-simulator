@@ -11,7 +11,7 @@ public class Food : GameComponent {
 		ctrl = GetComponentInParent<FoodController>();
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
 	    var sheep = other.gameObject.GetComponent<Sheep>();
 	    if (!sheep) return;
 	    if (sheep.food != gameObject) return;
