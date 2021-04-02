@@ -557,6 +557,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: defaultValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: wholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: initialMaxValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788993977}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSimulationSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SimulationController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3074357676363748629, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_Name
       value: SimSpeedSlider

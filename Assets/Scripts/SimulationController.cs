@@ -18,15 +18,15 @@ public class SimulationController : GameComponent
 	
 	float defaultDeltaTime;
 	
-	public int fieldSize {
+	public float fieldSize {
 		get => fieldSizeSlider.value;
 		set => fieldSizeSlider.value = value;
 	}
-	public int population {
+	public float population {
 		get => populationSlider.value;
 		set => populationSlider.value = value;
 	}
-	public int sheepSpeed {
+	public float sheepSpeed {
 		get => sheepSpeedSlider.value;
 		set => sheepSpeedSlider.value = value;
 	}
@@ -37,8 +37,8 @@ public class SimulationController : GameComponent
 		SetSimulationSpeed(0f);
 	}
 	
-	void SetMaxPopulation(int n) {
-		populationSlider.maxValue = Mathf.CeilToInt(n * n / 2f);
+	void SetMaxPopulation(float n) {
+		populationSlider.maxValue = Mathf.Ceil(n * n / 2f);
 	}
 	
 	public void SetSimulationSpeed(float multiplier) {
@@ -47,8 +47,8 @@ public class SimulationController : GameComponent
 	}
 	
 	public void StartSimulation() {
-		field.size = fieldSize;
-		sheepCtrl.Spawn(population, sheepSpeed);
+		field.size = (int) fieldSize;
+		sheepCtrl.Spawn((int) population, sheepSpeed);
 		mainMenu.SetActive(false);
 		SetSimulationSpeed(1f);
 	}

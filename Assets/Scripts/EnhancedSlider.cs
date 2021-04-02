@@ -8,36 +8,38 @@ using UnityEngine.UI;
 
 public class EnhancedSlider : GameComponent
 {
-	public int defaultValue = 0;
-	public int initialMinValue = 0;
-	public int initialMaxValue = 100;
+	public float defaultValue = 0;
+	public float initialMinValue = 0;
+	public float initialMaxValue = 100;
+	public bool wholeNumbers = true;
 	
 	[NotNull] public Slider slider;
 	[NotNull] public TMP_InputField input;
-	public UnityEvent<int> onValueChanged;
+	public UnityEvent<float> onValueChanged;
 	
-	public int value {
-		get => (int) slider.value;
+	public float value {
+		get => slider.value;
 		/* doesn't invoke onValueChanged to avoid recursion */
 		set {
 			slider.value = value;
 			/* slider will automatically cap its value to its bounds */
-			input.text = ((int) slider.value).ToString();
+			input.text = slider.value.ToString(wholeNumbers ? "0" : "0.0");
 		}
 	}
 	
-	public int minValue {
-		get => (int) slider.minValue;
+	public float minValue {
+		get => slider.minValue;
 		set => slider.minValue = value;
 	}
 	
-	public int maxValue {
-		get => (int) slider.maxValue;
+	public float maxValue {
+		get => slider.maxValue;
 		set => slider.maxValue = value;
 	}
 	
 	void Start() {
 		if (!slider || !input) return;
+		slider.wholeNumbers = wholeNumbers;
 		input.onEndEdit.AddListener(UpdateSlider);
 		slider.onValueChanged.AddListener(UpdateInput);
 		
@@ -47,16 +49,16 @@ public class EnhancedSlider : GameComponent
 	}
 	
 	void UpdateSlider(string value) {
-		if (!int.TryParse(value, out var num)) {
-			num = (int) slider.minValue;
+		if (!float.TryParse(value, out var num)) {
+			num = slider.minValue;
 		}
 		slider.value = num;
 		onValueChanged.Invoke(num);
 	}
 	
 	void UpdateInput(float value) {
-		var num = (int) value;
-		input.text = num.ToString();
+		var num = value;
+		input.text = num.ToString(wholeNumbers ? "0" : "0.0");
 		onValueChanged.Invoke(num);
 	}
 }
