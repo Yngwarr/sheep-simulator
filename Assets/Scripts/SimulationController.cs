@@ -6,10 +6,15 @@ using UnityEngine.UI;
 
 public class SimulationController : MonoBehaviour
 {
+	[Header("UI")]
 	public EnhancedSlider fieldSizeSlider;
 	public EnhancedSlider populationSlider;
 	public EnhancedSlider sheepSpeedSlider;
 	public GameObject mainMenu;
+	
+	[Header("Controllers")]
+	public Field field;
+	public SheepController sheepCtrl;
 	
 	float defaultDeltaTime;
 	
@@ -57,6 +62,8 @@ public class SimulationController : MonoBehaviour
 	}
 	
 	public void StartSimulation() {
+		field.size = fieldSize;
+		sheepCtrl.Spawn(population, sheepSpeed);
 		mainMenu.SetActive(false);
 		SetSimulationSpeed(1f);
 	}

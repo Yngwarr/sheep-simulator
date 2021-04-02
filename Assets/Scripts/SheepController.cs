@@ -13,7 +13,6 @@ public class SheepController : MonoBehaviour
 	public GameObject prefabFood;
 	public FoodController foodCtrl;
 	public Field field;
-	public float speed = 5f;
 
 	void OnValidate() {
 		if (!prefabSheep) {
@@ -30,14 +29,13 @@ public class SheepController : MonoBehaviour
 		}
 	}
 	
-	void Start() {
-		field.size = 10;
-		for (var i = 0; i < 5; ++i) {
-			Spawn();
+	public void Spawn(int amount, float speed) {
+		for (int i = 0; i < amount; ++i) {
+			Spawn(speed);
 		}
 	}
 	
-	void Spawn() {
+	void Spawn(float speed) {
 		var x = Random.Range(field.bounds.min.x, field.bounds.max.x);
 		var z = Random.Range(field.bounds.min.z, field.bounds.max.z);
 		
