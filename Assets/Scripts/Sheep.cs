@@ -20,6 +20,6 @@ public class Sheep : MonoBehaviour {
         if (!food) return;
         var foodDirection = food.transform.position;
         transform.LookAt(foodDirection);
-        rigid.MovePosition(transform.position + Time.deltaTime * speed * transform.forward);
+        rigid.MovePosition(transform.position + Time.fixedDeltaTime * speed * transform.forward);
     }
 }

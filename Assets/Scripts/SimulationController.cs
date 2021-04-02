@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SimulationController : MonoBehaviour
 {
 	public EnhancedSlider fieldSizeSlider;
 	public EnhancedSlider populationSlider;
 	public EnhancedSlider sheepSpeedSlider;
+	public GameObject mainMenu;
+	
+	float defaultDeltaTime;
 	
 	public int fieldSize {
 		get => fieldSizeSlider.value;
@@ -32,13 +36,28 @@ public class SimulationController : MonoBehaviour
 		if (!sheepSpeedSlider) {
 			Debug.LogError("Sheep Speed Slider is not set", this);
 		}
+		if (!mainMenu) {
+			Debug.LogError("Main Menu is not set", this);
+		}
 	}
 
 	void Awake() {
-		fieldSizeSlider.onValueChanged.AddListener(SetMaxPopulaiton);
+		defaultDeltaTime = Time.fixedDeltaTime;
+		fieldSizeSlider.onValueChanged.AddListener(SetMaxPopulation);
+		SetSimulationSpeed(0f);
 	}
 	
-	void SetMaxPopulaiton(int n) {
-		populationSlider.maxValue = Mathf.CeilToInt(n * n / 2);
+	void SetMaxPopulation(int n) {
+		populationSlider.maxValue = Mathf.CeilToInt(n * n / 2f);
+	}
+	
+	public void SetSimulationSpeed(float multiplier) {
+		Time.timeScale = multiplier;
+		Time.fixedDeltaTime = defaultDeltaTime * multiplier;
+	}
+	
+	public void StartSimulation() {
+		mainMenu.SetActive(false);
+		SetSimulationSpeed(1f);
 	}
 }

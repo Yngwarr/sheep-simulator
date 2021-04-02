@@ -1615,6 +1615,7 @@ MonoBehaviour:
   fieldSizeSlider: {fileID: 1808359416}
   populationSlider: {fileID: 1114471046}
   sheepSpeedSlider: {fileID: 1089126238}
+  mainMenu: {fileID: 2065856228}
 --- !u!4 &1788993978
 Transform:
   m_ObjectHideFlags: 0
@@ -1822,7 +1823,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065856231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1788993977}
+        m_TargetAssemblyTypeName: SimulationController, Assembly-CSharp
+        m_MethodName: StartSimulation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2065856231
 MonoBehaviour:
   m_ObjectHideFlags: 0
