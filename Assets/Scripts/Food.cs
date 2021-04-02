@@ -14,9 +14,13 @@ public class Food : GameComponent {
 	void OnTriggerStay(Collider other) {
 	    var sheep = other.gameObject.GetComponent<Sheep>();
 	    if (!sheep) return;
-	    if (sheep.food != gameObject) return;
+	    if (sheep.food != this) return;
 	    
 	    EventManager.Get().foodEaten.Invoke(transform.position);
-	    ctrl.Respawn(this, sheep);
+		Respawn(sheep);
     }
+	
+	public void Respawn(Sheep sheep) {
+		ctrl.Respawn(this, sheep);
+	}
 }

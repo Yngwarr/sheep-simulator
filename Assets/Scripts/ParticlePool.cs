@@ -10,7 +10,7 @@ public class ParticlePool : GameComponent
 	
 	List<ParticleSystem> free = new List<ParticleSystem>();
 	int size = 0;
-	bool on = false;
+	bool on = true;
 	
 	void Start() {
 		EventManager.Get().foodEaten.AddListener(Spawn);

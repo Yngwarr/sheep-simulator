@@ -31,7 +31,7 @@ public class SheepController : GameComponent
 		var food = foodObj.GetComponent<Food>();
 		
 		sheep.transform.position = new Vector3(x, HEIGHT, z);
-		sheep.food = foodObj;
+		sheep.food = food;
 		sheep.speed = speed;
 		food.transform.position = Vector3.up * HEIGHT;
 		foodCtrl.Respawn(food, sheep);
