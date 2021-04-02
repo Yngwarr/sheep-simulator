@@ -4,17 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ParticlePool : MonoBehaviour
+public class ParticlePool : GameComponent
 {
-	public ParticleSystem particleObj;
+	[NotNull] public ParticleSystem particleObj;
+	
 	List<ParticleSystem> free = new List<ParticleSystem>();
 	int size = 0;
-	
-	void OnValidate() {
-		if (!particleObj) {
-			Debug.LogError("Particle is not set.", this);
-		}
-	}
 	
 	void Start() {
 		EventManager.Get().foodEaten.AddListener(Spawn);

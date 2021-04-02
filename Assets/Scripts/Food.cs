@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Food : MonoBehaviour {
+public class Food : GameComponent {
 	FoodController ctrl;
 
 	void Start() {

@@ -4,18 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class FoodController : MonoBehaviour
+public class FoodController : GameComponent
 {
 	const float SPAWN_RANGE = 5f;
 	const float MIN_RADIUS = 1f;
 	
-	public Field field;
-
-	void OnValidate() {
-		if (!field) {
-			Debug.LogError("Field is not set.", this);
-		}
-	}
+	[NotNull] public Field field;
 
 	Vector2 Cartesian(Vector3 center, float radius, float angle) {
 		return new Vector2(center.x + radius * Mathf.Cos(angle), center.z + radius * Mathf.Sin(angle));

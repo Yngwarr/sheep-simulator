@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field : MonoBehaviour {
+public class Field : GameComponent {
 	const int MAX_SIZE = 1000;
 	const int MIN_SIZE = 2;
 	

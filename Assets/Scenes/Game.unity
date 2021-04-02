@@ -170,7 +170,6 @@ MonoBehaviour:
   prefabFood: {fileID: 4297042001725961646, guid: 93af07fc7b87e2a4098e0e3f43d4642c, type: 3}
   foodCtrl: {fileID: 227568209}
   field: {fileID: 1109003036}
-  speed: 5
 --- !u!1 &153275133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1614,9 @@ MonoBehaviour:
   fieldSizeSlider: {fileID: 1808359416}
   populationSlider: {fileID: 1114471046}
   sheepSpeedSlider: {fileID: 1089126238}
-  mainMenu: {fileID: 2065856228}
+  mainMenu: {fileID: 1566637544}
+  field: {fileID: 1109003036}
+  sheepCtrl: {fileID: 114857791}
 --- !u!4 &1788993978
 Transform:
   m_ObjectHideFlags: 0

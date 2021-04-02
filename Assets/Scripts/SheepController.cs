@@ -5,30 +5,15 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SheepController : MonoBehaviour
+public class SheepController : GameComponent
 {
 	const float HEIGHT = .25f;
 
-	public GameObject prefabSheep;
-	public GameObject prefabFood;
-	public FoodController foodCtrl;
-	public Field field;
+	[NotNull] public GameObject prefabSheep;
+	[NotNull] public GameObject prefabFood;
+	[NotNull] public FoodController foodCtrl;
+	[NotNull] public Field field;
 
-	void OnValidate() {
-		if (!prefabSheep) {
-			Debug.LogError("Prefab Sheep is not set.", this);
-		}
-		if (!prefabFood) {
-			Debug.LogError("Prefab Food is not set.", this);
-		}
-		if (!foodCtrl) {
-			Debug.LogError("Food Controller is not set.", this);
-		}
-		if (!field) {
-			Debug.LogError("Field is not set.", this);
-		}
-	}
-	
 	public void Spawn(int amount, float speed) {
 		for (int i = 0; i < amount; ++i) {
 			Spawn(speed);

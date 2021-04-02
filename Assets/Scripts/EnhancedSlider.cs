@@ -6,14 +6,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class EnhancedSlider : MonoBehaviour
+public class EnhancedSlider : GameComponent
 {
 	public int defaultValue = 0;
 	public int initialMinValue = 0;
 	public int initialMaxValue = 100;
 	
-	public Slider slider;
-	public TMP_InputField input;
+	[NotNull] public Slider slider;
+	[NotNull] public TMP_InputField input;
 	public UnityEvent<int> onValueChanged;
 	
 	public int value {
@@ -34,15 +34,6 @@ public class EnhancedSlider : MonoBehaviour
 	public int maxValue {
 		get => (int) slider.maxValue;
 		set => slider.maxValue = value;
-	}
-	
-	void OnValidate() {
-		if (!slider) {
-			Debug.LogError("Slider is not set.", this);
-		}
-		if (!input) {
-			Debug.LogError("Input is not set.", this);
-		}
 	}
 	
 	void Start() {

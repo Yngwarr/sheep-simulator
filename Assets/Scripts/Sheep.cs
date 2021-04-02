@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Sheep : MonoBehaviour {
+public class Sheep : GameComponent {
     public GameObject food;
     public float speed = 5f;
 

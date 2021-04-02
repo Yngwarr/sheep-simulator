@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SimulationController : MonoBehaviour
+public class SimulationController : GameComponent
 {
 	[Header("UI")]
-	public EnhancedSlider fieldSizeSlider;
-	public EnhancedSlider populationSlider;
-	public EnhancedSlider sheepSpeedSlider;
-	public GameObject mainMenu;
+	[NotNull] public EnhancedSlider fieldSizeSlider;
+	[NotNull] public EnhancedSlider populationSlider;
+	[NotNull] public EnhancedSlider sheepSpeedSlider;
+	[NotNull] public GameObject mainMenu;
 	
 	[Header("Controllers")]
-	public Field field;
-	public SheepController sheepCtrl;
+	[NotNull] public Field field;
+	[NotNull] public SheepController sheepCtrl;
 	
 	float defaultDeltaTime;
 	
@@ -29,21 +29,6 @@ public class SimulationController : MonoBehaviour
 	public int sheepSpeed {
 		get => sheepSpeedSlider.value;
 		set => sheepSpeedSlider.value = value;
-	}
-
-	void OnValidate() {
-		if (!fieldSizeSlider) {
-			Debug.LogError("Field Size Slider is not set", this);
-		}
-		if (!populationSlider) {
-			Debug.LogError("Population Slider is not set", this);
-		}
-		if (!sheepSpeedSlider) {
-			Debug.LogError("Sheep Speed Slider is not set", this);
-		}
-		if (!mainMenu) {
-			Debug.LogError("Main Menu is not set", this);
-		}
 	}
 
 	void Awake() {
