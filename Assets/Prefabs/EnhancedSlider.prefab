@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.270996, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 228, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3074357676363748627
@@ -53,6 +53,7 @@ MonoBehaviour:
   defaultValue: 0
   initialMinValue: 0
   initialMaxValue: 100
+  wholeNumbers: 1
   slider: {fileID: 3074357676903184886}
   input: {fileID: 3074357676972051427}
   onValueChanged:
