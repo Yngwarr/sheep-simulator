@@ -11,10 +11,12 @@ public class SimulationController : GameComponent
 	[NotNull] public EnhancedSlider populationSlider;
 	[NotNull] public EnhancedSlider sheepSpeedSlider;
 	[NotNull] public GameObject mainMenu;
+	[NotNull] public GameObject HUD;
 	
 	[Header("Controllers")]
 	[NotNull] public Field field;
 	[NotNull] public SheepController sheepCtrl;
+	[NotNull] public ParticlePool particlePool;
 	
 	float defaultDeltaTime;
 	
@@ -45,6 +47,8 @@ public class SimulationController : GameComponent
 #if UNITY_EDITOR
 		if (multiplier > 100f) multiplier = 100f;
 #endif
+		/* effects will be too fast to see anyway, but they still affect performance */
+		particlePool.on = multiplier <= 60f;
 		Time.timeScale = multiplier;
 		Time.fixedDeltaTime = defaultDeltaTime * multiplier;
 	}
@@ -53,6 +57,7 @@ public class SimulationController : GameComponent
 		field.size = (int) fieldSize;
 		sheepCtrl.Spawn((int) population, sheepSpeed);
 		mainMenu.SetActive(false);
+		HUD.SetActive(true);
 		SetSimulationSpeed(1f);
 	}
 }

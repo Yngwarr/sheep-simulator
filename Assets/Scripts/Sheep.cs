@@ -28,7 +28,7 @@ public class Sheep : GameComponent {
         while (step > foodDist) {
 	        step -= foodDist;
 	        previousPos = food.transform.position;
-	        food.Respawn(this);
+	        food.Respawn(previousPos, speed);
         }
         
         transform.position = previousPos;

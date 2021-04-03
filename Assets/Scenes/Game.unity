@@ -601,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimSpeedSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 3074357676546261163, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3074357676903184873, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -619,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676903184873, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.9
+      value: 33.899994
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676903184873, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -655,7 +659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676972051426, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 34.699997
+      value: 34.69998
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676972051426, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1336,7 +1340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.08392334, y: 48.7507}
+  m_AnchoredPosition: {x: -0.083984375, y: 48.750732}
   m_SizeDelta: {x: -28.1678, y: 71.5015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402826059
@@ -2111,12 +2115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1366, y: 768}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2132,7 +2136,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

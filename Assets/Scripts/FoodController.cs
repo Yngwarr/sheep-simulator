@@ -15,12 +15,12 @@ public class FoodController : GameComponent
 		return new Vector2(center.x + radius * Mathf.Cos(angle), center.z + radius * Mathf.Sin(angle));
 	}
 
-	public void Respawn(Food food, Sheep sheep) {
+	public void Respawn(Food food, Vector3 sheepPos, float sheepSpeed) {
 	    /* starts with one because we don't want to overlap the sheep */
 	    /* TODO 1f -> sheep.scale/2 + food.scale/2, given the standard radius ~ 1 */
-	    var center = sheep.transform.position;
+	    var center = sheepPos;
 	    
-	    var radius = Random.Range(MIN_RADIUS, sheep.speed * SPAWN_RANGE);
+	    var radius = Random.Range(MIN_RADIUS, sheepSpeed * SPAWN_RANGE);
 	    var angle = Random.value * Mathf.PI * 2;
 	    
 		Vector2 point;

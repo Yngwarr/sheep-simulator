@@ -16,11 +16,11 @@ public class Food : GameComponent {
 	    if (!sheep) return;
 	    if (sheep.food != this) return;
 	    
-	    EventManager.Get().foodEaten.Invoke(transform.position);
-		Respawn(sheep);
+		Respawn(sheep.transform.position, sheep.speed);
     }
 	
-	public void Respawn(Sheep sheep) {
-		ctrl.Respawn(this, sheep);
+	public void Respawn(Vector3 sheepPos, float sheepSpeed) {
+	    EventManager.Get().foodEaten.Invoke(transform.position);
+		ctrl.Respawn(this, sheepPos, sheepSpeed);
 	}
 }

@@ -34,6 +34,6 @@ public class SheepController : GameComponent
 		sheep.food = food;
 		sheep.speed = speed;
 		food.transform.position = Vector3.up * HEIGHT;
-		foodCtrl.Respawn(food, sheep);
+		foodCtrl.Respawn(food, sheep.transform.position, sheep.speed);
 	}
 }
