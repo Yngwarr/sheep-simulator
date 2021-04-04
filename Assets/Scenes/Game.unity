@@ -631,15 +631,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676926723154, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.008016032
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676926723154, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676926723154, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.008016032
       objectReference: {fileID: 0}
     - target: {fileID: 3074357676972051426, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.x
@@ -667,11 +667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074357677007454442, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.008016032
       objectReference: {fileID: 0}
     - target: {fileID: 3074357677007454442, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
@@ -1321,7 +1321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1402826058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2007,6 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 2341026251866221344, guid: e1445b8a1bb209a46903c9658640e643, type: 3}
+  on: 1
 --- !u!1 &1788993976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,8 +2041,10 @@ MonoBehaviour:
   populationSlider: {fileID: 1114471046}
   sheepSpeedSlider: {fileID: 1089126238}
   mainMenu: {fileID: 1566637544}
+  HUD: {fileID: 1402826057}
   field: {fileID: 1109003036}
   sheepCtrl: {fileID: 114857791}
+  particlePool: {fileID: 1692860203}
 --- !u!4 &1788993978
 Transform:
   m_ObjectHideFlags: 0
