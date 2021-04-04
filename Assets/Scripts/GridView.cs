@@ -11,12 +11,14 @@ public class GridView : GameComponent
 	[Header("Materials")]
 	[NotNull] public Material still;
 	[NotNull] public Material highlight;
+	[NotNull] public Material aroundMat;
 	
 	FoodGrid grid;
 	List<Renderer> points = new List<Renderer>();
 	
 	Sheep tracking;
 	Renderer lastTracked;
+	List<int> lastAround = new List<int>();
 	
 	public void Fill() {
 		var size = (int) field.bounds.size.x;
@@ -38,8 +40,16 @@ public class GridView : GameComponent
 		if (!tracking) return;
 		var pos = grid.Snap(tracking.transform.position);
 		if (lastTracked) lastTracked.material = still;
+		foreach (var i in lastAround) {
+			points[i].material = still;
+		}
 		var point = points[grid.Index(pos)];
+		var around = grid.Around(tracking.transform.position, 2);
+		foreach (var i in around) {
+			points[i].material = aroundMat;
+		}
 		point.material = highlight;
 		lastTracked = point;
+		lastAround = around;
 	}
 }
