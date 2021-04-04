@@ -723,7 +723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20757ebfc0bf2904a8c15c19db6fc542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: {fileID: 1109003036}
 --- !u!1 &313584598
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,55 +950,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &799199045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 799199047}
-  - component: {fileID: 799199046}
-  m_Layer: 0
-  m_Name: GridView
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &799199046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799199045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deed7ec293189be4ca05f983ffa4a860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointObj: {fileID: 5124079156095702490, guid: 904da0214ff1e494fb4050515df71c23, type: 3}
-  field: {fileID: 1109003036}
-  still: {fileID: 2100000, guid: 757351dfa48a40641affdae1cf20b290, type: 2}
-  highlight: {fileID: 2100000, guid: 53da51fa34891154683c2cf903c480bc, type: 2}
-  aroundMat: {fileID: 2100000, guid: f0297d0e85b37944593540221843ba14, type: 2}
-  randMat: {fileID: 2100000, guid: 80e877aadf8555e4bb5753b5bd7130e9, type: 2}
---- !u!4 &799199047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799199045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,8 +2043,8 @@ MonoBehaviour:
   HUD: {fileID: 1402826057}
   field: {fileID: 1109003036}
   sheepCtrl: {fileID: 114857791}
+  foodCtrl: {fileID: 227568209}
   particlePool: {fileID: 1692860203}
-  gridView: {fileID: 799199046}
 --- !u!4 &1788993978
 Transform:
   m_ObjectHideFlags: 0

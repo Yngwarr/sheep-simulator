@@ -16,10 +16,11 @@ public class SimulationController : GameComponent
 	[Header("Controllers")]
 	[NotNull] public Field field;
 	[NotNull] public SheepController sheepCtrl;
+	[NotNull] public FoodController foodCtrl;
 	[NotNull] public ParticlePool particlePool;
 	
 	[Header("Debug")]
-	[NotNull] public GridView gridView;
+	// [NotNull] public GridView gridView;
 	
 	float defaultDeltaTime;
 	
@@ -58,13 +59,14 @@ public class SimulationController : GameComponent
 	
 	public void StartSimulation() {
 		field.size = (int) fieldSize;
+		foodCtrl.Init(field);
 		sheepCtrl.Spawn((int) population, sheepSpeed);
 		particlePool.Init((int) population);
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
 		SetSimulationSpeed(1f);
 		
-		gridView.Fill();
-		gridView.Track(sheepCtrl.GetComponentInChildren<Sheep>());
+		// gridView.Fill();
+		// gridView.Track(sheepCtrl.GetComponentInChildren<Sheep>());
 	}
 }

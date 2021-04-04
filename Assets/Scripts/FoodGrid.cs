@@ -32,8 +32,8 @@ public class FoodGrid
 		return point.x * size * 2 + point.y;
 	}
 	
-	void Set(Vector2Int point, bool value) {
-		grid[Index(point)] = value;
+	public void Set(Vector3 point, bool value) {
+		grid[Index(Snap(point))] = value;
 	}
 	
 	public bool InBounds(Vector2Int point) {
@@ -41,12 +41,13 @@ public class FoodGrid
 			&& point.y >= 0 && point.y < size * pointsPerUnit;
 	}
 	
-	public bool IsFree(Vector3 point) {
-		return IsFree(Snap(point));
-	}
-	
 	bool IsFree(Vector2Int point) {
 		return InBounds(point) && !grid[Index(point)];
+	}
+	
+	/* check whether the a is in Moore's neighborhood of b */
+	bool IsNeighbor(Vector2Int a, Vector2Int b) {
+		return Mathf.Abs(a.x - b.x) <= 1 && Mathf.Abs(a.y - b.y) <= 1;
 	}
 	
 	public List<int> Around(Vector3 center, float radius) {
@@ -73,11 +74,13 @@ public class FoodGrid
 		var point = Snap(ori);
 		
 		var num = (int) radius * 2 * pointsPerUnit;
-		var res = new List<int>();
+		var centerSnapped = Snap(center);
 		for (var i = 0; i < num; ++i) {
 			for (var j = 0 ; j < num; ++j) {
 				var real = Real(point, center.y);
-				if (IsFree(point) && Vector3.Distance(real, center) < radius) {
+				if (IsFree(point)
+					&& Vector3.Distance(real, center) < radius
+					&& !IsNeighbor(point, centerSnapped)) {
 					return real;
 				}
 				point.x++;
@@ -90,12 +93,13 @@ public class FoodGrid
 	} 
 	
 	public Vector3 RandInCircle(Vector3 center, float radius) {
+		var centerSnapped = Snap(center);
 		for (var i = 0; i < 15; ++i) {
 			var rand = Random.insideUnitCircle * radius;
-			var point = center + new Vector3(rand.x, center.y, rand.y);
-			if (IsFree(point)) {
+			var point = Snap(center + new Vector3(rand.x, center.y, rand.y));
+			if (IsFree(point) && !IsNeighbor(point, centerSnapped)) {
 				/* occupying the point is the caller's concern */
-				return point;
+				return Real(point, center.y);
 			}
 		}
 		/* fallback in case we're feeling unlucky */
