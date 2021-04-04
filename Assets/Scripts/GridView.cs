@@ -12,6 +12,7 @@ public class GridView : GameComponent
 	[NotNull] public Material still;
 	[NotNull] public Material highlight;
 	[NotNull] public Material aroundMat;
+	[NotNull] public Material randMat;
 	
 	FoodGrid grid;
 	List<Renderer> points = new List<Renderer>();
@@ -19,6 +20,9 @@ public class GridView : GameComponent
 	Sheep tracking;
 	Renderer lastTracked;
 	List<int> lastAround = new List<int>();
+	
+	Renderer randomPoint;
+	int updateCounter = 5;
 	
 	public void Fill() {
 		var size = (int) field.bounds.size.x;
@@ -38,17 +42,24 @@ public class GridView : GameComponent
 
 	void FixedUpdate() {
 		if (!tracking) return;
+		var radius = 2f;
 		var pos = grid.Snap(tracking.transform.position);
 		if (lastTracked) lastTracked.material = still;
 		foreach (var i in lastAround) {
 			points[i].material = still;
 		}
 		var point = points[grid.Index(pos)];
-		var around = grid.Around(tracking.transform.position, 2);
+		var around = grid.Around(tracking.transform.position, radius);
 		foreach (var i in around) {
 			points[i].material = aroundMat;
 		}
 		point.material = highlight;
+		if (--updateCounter == 0) {
+			updateCounter = 50;
+			if (randomPoint) randomPoint.material = still;
+			randomPoint = points[grid.Index(grid.Snap(grid.RandInCircle(tracking.transform.position, radius)))];
+		}
+		if (randomPoint) randomPoint.material = randMat;
 		lastTracked = point;
 		lastAround = around;
 	}

@@ -985,6 +985,7 @@ MonoBehaviour:
   still: {fileID: 2100000, guid: 757351dfa48a40641affdae1cf20b290, type: 2}
   highlight: {fileID: 2100000, guid: 53da51fa34891154683c2cf903c480bc, type: 2}
   aroundMat: {fileID: 2100000, guid: f0297d0e85b37944593540221843ba14, type: 2}
+  randMat: {fileID: 2100000, guid: 80e877aadf8555e4bb5753b5bd7130e9, type: 2}
 --- !u!4 &799199047
 Transform:
   m_ObjectHideFlags: 0
