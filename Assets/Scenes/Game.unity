@@ -980,8 +980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deed7ec293189be4ca05f983ffa4a860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {fileID: 5124079156095702490, guid: 904da0214ff1e494fb4050515df71c23, type: 3}
+  pointObj: {fileID: 5124079156095702490, guid: 904da0214ff1e494fb4050515df71c23, type: 3}
   field: {fileID: 1109003036}
+  still: {fileID: 2100000, guid: 757351dfa48a40641affdae1cf20b290, type: 2}
+  highlight: {fileID: 2100000, guid: 53da51fa34891154683c2cf903c480bc, type: 2}
 --- !u!4 &799199047
 Transform:
   m_ObjectHideFlags: 0

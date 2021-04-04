@@ -59,9 +59,12 @@ public class SimulationController : GameComponent
 	public void StartSimulation() {
 		field.size = (int) fieldSize;
 		sheepCtrl.Spawn((int) population, sheepSpeed);
+		particlePool.Init((int) population);
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
 		SetSimulationSpeed(1f);
+		
 		gridView.Fill();
+		gridView.Track(sheepCtrl.GetComponentInChildren<Sheep>());
 	}
 }

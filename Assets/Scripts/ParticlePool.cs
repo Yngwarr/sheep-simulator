@@ -14,10 +14,9 @@ public class ParticlePool : GameComponent
 	
 	void Start() {
 		EventManager.Get().foodEaten.AddListener(Spawn);
-		Init(5);
 	}
 	
-	void Init(int amount) {
+	public void Init(int amount) {
 		for (int i = 0; i < amount; ++i) {
 			free.Add(New());
 		}
