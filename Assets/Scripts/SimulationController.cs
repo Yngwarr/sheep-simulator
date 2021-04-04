@@ -18,6 +18,9 @@ public class SimulationController : GameComponent
 	[NotNull] public SheepController sheepCtrl;
 	[NotNull] public ParticlePool particlePool;
 	
+	[Header("Debug")]
+	[NotNull] public GridView gridView;
+	
 	float defaultDeltaTime;
 	
 	public float fieldSize {
@@ -59,5 +62,6 @@ public class SimulationController : GameComponent
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
 		SetSimulationSpeed(1f);
+		gridView.Fill();
 	}
 }
