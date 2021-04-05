@@ -36,9 +36,10 @@ public class Sheep : GameComponent {
 	        food.Respawn(previousPos, speed);
         }
         
-        transform.position = previousPos;
-        transform.LookAt(food.transform.position);
-        rigid.MovePosition(previousPos + step * transform.forward);
+        var direction = (food.transform.position - previousPos).normalized;
+        var angle = Vector3.SignedAngle(Vector3.right, direction, Vector3.up);
+        rigid.MoveRotation(Quaternion.AngleAxis(angle, Vector3.up));
+        rigid.MovePosition(previousPos + step * direction);
     }
 
     void OnBecameVisible() {
