@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4297042001725961640}
   - component: {fileID: 4297042001725961641}
   - component: {fileID: 4297042001725961637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 80e877aadf8555e4bb5753b5bd7130e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

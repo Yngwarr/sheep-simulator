@@ -14,13 +14,13 @@ public class SheepController : GameComponent
 	[NotNull] public FoodController foodCtrl;
 	[NotNull] public Field field;
 
-	public void Spawn(int amount, float speed) {
+	public void Spawn(int amount, float speed, bool collideWhenInvisible) {
 		for (int i = 0; i < amount; ++i) {
-			Spawn(speed);
+			Spawn(speed, collideWhenInvisible);
 		}
 	}
 	
-	void Spawn(float speed) {
+	void Spawn(float speed, bool collideWhenInvisible) {
 		var x = Random.Range(field.bounds.min.x, field.bounds.max.x);
 		var z = Random.Range(field.bounds.min.z, field.bounds.max.z);
 		
@@ -33,6 +33,7 @@ public class SheepController : GameComponent
 		sheep.transform.position = new Vector3(x, HEIGHT, z);
 		sheep.food = food;
 		sheep.speed = speed;
+		sheep.collideWhenInvisible = collideWhenInvisible;
 		food.transform.position = Vector3.up * HEIGHT;
 		foodCtrl.Respawn(food, sheep.transform.position, sheep.speed);
 	}

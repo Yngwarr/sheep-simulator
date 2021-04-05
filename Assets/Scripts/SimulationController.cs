@@ -60,7 +60,7 @@ public class SimulationController : GameComponent
 	public void StartSimulation() {
 		field.size = (int) fieldSize;
 		foodCtrl.Init(field);
-		sheepCtrl.Spawn((int) population, sheepSpeed);
+		sheepCtrl.Spawn((int) population, sheepSpeed, false);
 		particlePool.Init((int) population);
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);

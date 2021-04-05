@@ -6,12 +6,17 @@ using UnityEngine.UIElements;
 public class Sheep : GameComponent {
     public Food food;
     public float speed = 5f;
+    public bool collideWhenInvisible = true;
     
     Rigidbody rigid;
+    int defaultLayer;
+    int invisibleLayer;
 
     // Start is called before the first frame update
     void Start() {
 	    rigid = GetComponent<Rigidbody>();
+	    defaultLayer = gameObject.layer;
+	    invisibleLayer = LayerMask.NameToLayer("InvisibleSheeps");
         if (!food) {
             Debug.LogError("Food is not set.", this);
         }
@@ -34,5 +39,15 @@ public class Sheep : GameComponent {
         transform.position = previousPos;
         transform.LookAt(food.transform.position);
         rigid.MovePosition(previousPos + step * transform.forward);
+    }
+
+    void OnBecameVisible() {
+	    if (collideWhenInvisible) return;
+		gameObject.layer = defaultLayer;
+    }
+
+    void OnBecameInvisible() {
+	    if (collideWhenInvisible) return;
+		gameObject.layer = invisibleLayer;
     }
 }
