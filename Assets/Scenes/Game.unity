@@ -1054,6 +1054,7 @@ MonoBehaviour:
   maxScale: 10
   minAngle: 15
   maxAngle: 75
+  boundsMargin: 5
 --- !u!45 &963194230
 Skybox:
   m_ObjectHideFlags: 0

@@ -65,9 +65,7 @@ public class SimulationController : GameComponent
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
 		mainCamera.on = true;
+		mainCamera.Init(field.bounds);
 		SetSimulationSpeed(1f);
-		
-		// gridView.Fill();
-		// gridView.Track(sheepCtrl.GetComponentInChildren<Sheep>());
 	}
 }
