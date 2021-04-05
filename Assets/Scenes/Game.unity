@@ -1047,10 +1047,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752d93e2548c1c345a6c5da6c9c008fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
   speed: 10
   altSpeed: 5
   minScale: 1
   maxScale: 10
+  minAngle: 15
+  maxAngle: 75
 --- !u!45 &963194230
 Skybox:
   m_ObjectHideFlags: 0
@@ -2072,6 +2075,7 @@ MonoBehaviour:
   sheepCtrl: {fileID: 114857791}
   foodCtrl: {fileID: 227568209}
   particlePool: {fileID: 1692860203}
+  mainCamera: {fileID: 963194229}
 --- !u!4 &1788993978
 Transform:
   m_ObjectHideFlags: 0

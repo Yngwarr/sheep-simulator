@@ -19,8 +19,8 @@ public class SimulationController : GameComponent
 	[NotNull] public FoodController foodCtrl;
 	[NotNull] public ParticlePool particlePool;
 	
-	[Header("Debug")]
-	// [NotNull] public GridView gridView;
+	[Header("Misc")]
+	[NotNull] public MovingCamera mainCamera;
 	
 	float defaultDeltaTime;
 	
@@ -64,6 +64,7 @@ public class SimulationController : GameComponent
 		particlePool.Init((int) population);
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
+		mainCamera.on = true;
 		SetSimulationSpeed(1f);
 		
 		// gridView.Fill();

@@ -40,15 +40,15 @@ public class EnhancedSlider : GameComponent
 	void Start() {
 		if (!slider || !input) return;
 		slider.wholeNumbers = wholeNumbers;
-		input.onEndEdit.AddListener(UpdateSlider);
-		slider.onValueChanged.AddListener(UpdateInput);
+		input.onEndEdit.AddListener(OnInputUpdate);
+		slider.onValueChanged.AddListener(OnSliderUpdate);
 		
 		minValue = initialMinValue;
 		maxValue = initialMaxValue;
 		value = defaultValue;
 	}
 	
-	void UpdateSlider(string value) {
+	void OnInputUpdate(string value) {
 		if (!float.TryParse(value, out var num)) {
 			num = slider.minValue;
 		}
@@ -56,7 +56,7 @@ public class EnhancedSlider : GameComponent
 		onValueChanged.Invoke(num);
 	}
 	
-	void UpdateInput(float value) {
+	void OnSliderUpdate(float value) {
 		var num = value;
 		input.text = num.ToString(wholeNumbers ? "0" : "0.0");
 		onValueChanged.Invoke(num);
