@@ -1411,6 +1411,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402826057}
   m_CullTransparentMesh: 1
+--- !u!114 &1438604267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3074357676363748627, guid: f4533343d996d464384b7cb485b7fb34, type: 3}
+  m_PrefabInstance: {fileID: 213642342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e2b85c7082f084e98e51e42940dd67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1520750201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,6 +2083,7 @@ MonoBehaviour:
   sheepSpeedSlider: {fileID: 1089126238}
   mainMenu: {fileID: 1566637544}
   HUD: {fileID: 1402826057}
+  simSpeedSlider: {fileID: 1438604267}
   field: {fileID: 1109003036}
   sheepCtrl: {fileID: 114857791}
   foodCtrl: {fileID: 227568209}

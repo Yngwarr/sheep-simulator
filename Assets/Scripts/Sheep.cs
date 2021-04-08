@@ -34,11 +34,12 @@ public class Sheep : GameComponent {
 	        step -= foodDist;
 	        previousPos = food.transform.position;
 	        food.Respawn(previousPos, speed);
+	        foodDist = Vector3.Distance(previousPos, food.transform.position);
         }
         
         var direction = (food.transform.position - previousPos).normalized;
-        var angle = Vector3.SignedAngle(Vector3.right, direction, Vector3.up);
-        rigid.MoveRotation(Quaternion.AngleAxis(angle, Vector3.up));
+        var angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
+        rigid.rotation = Quaternion.AngleAxis(angle, Vector3.up);
         rigid.MovePosition(previousPos + step * direction);
     }
 

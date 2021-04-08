@@ -9,7 +9,7 @@ public class FoodController : GameComponent
 	const float SPAWN_RANGE = 5f;
 	const float MIN_RADIUS = 1f;
 	
-	Field field;
+	public Field field;
 	FoodGrid grid;
 
 	public void Init(Field f) {
