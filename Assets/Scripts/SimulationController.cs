@@ -1,18 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SimulationController : GameComponent
 {
+	const string SAVE_FILE = "save.txt";
+	
 	[Header("UI")]
 	[NotNull] public EnhancedSlider fieldSizeSlider;
 	[NotNull] public EnhancedSlider populationSlider;
 	[NotNull] public EnhancedSlider sheepSpeedSlider;
 	[NotNull] public GameObject mainMenu;
 	[NotNull] public GameObject HUD;
+	[NotNull] public Popup popup;
 	[NotNull] public EnhancedSlider simSpeedSlider;
+	[NotNull] public Button startButton;
+	[NotNull] public Button loadButton;
+	[NotNull] public Button saveButton;
 	
 	[Header("Controllers")]
 	[NotNull] public Field field;
@@ -24,6 +34,8 @@ public class SimulationController : GameComponent
 	[NotNull] public MovingCamera mainCamera;
 	
 	float defaultDeltaTime;
+	float popupTime = 0f;
+	float lastTime;
 	
 	public float fieldSize {
 		get => fieldSizeSlider.value;
@@ -42,25 +54,19 @@ public class SimulationController : GameComponent
 		defaultDeltaTime = Time.fixedDeltaTime;
 		fieldSizeSlider.onValueChanged.AddListener(SetMaxPopulation);
 		SetSimulationSpeed(0f);
+		loadButton.interactable = File.Exists(SAVE_FILE);
 	}
 	
 	void Update() {
 		var speedInput = Input.GetAxisRaw("SimulationSpeed");
-		var updateSlider = false;
 		
 		if (!Mathf.Approximately(speedInput, 0f)) {
 			var delta = Input.GetButton("AltSpeed") ? .5f : .1f;
 			AddSimulationSpeed(speedInput * delta);
-			updateSlider = true;
 		}
 		
 		if (Input.GetButtonDown("Pause")) {
 			SetSimulationSpeed(Time.timeScale > 0f ? 0f : 1f);
-			updateSlider = true;
-		}
-		
-		if (updateSlider) {
-			simSpeedSlider.value = Time.timeScale;
 		}
 	}
 	
@@ -76,6 +82,7 @@ public class SimulationController : GameComponent
 		particlePool.on = multiplier <= 60f;
 		Time.timeScale = multiplier;
 		Time.fixedDeltaTime = defaultDeltaTime * multiplier;
+		simSpeedSlider.value = Time.timeScale;
 	}
 	
 	public void AddSimulationSpeed(float delta) {
@@ -83,15 +90,107 @@ public class SimulationController : GameComponent
 		SetSimulationSpeed(scale <= 0f ? 0f : scale);
 	}
 
-	public void StartSimulation() {
+	public void StartSimulation(bool load) {
+		loadButton.interactable = false;
+		startButton.interactable = false;
+		
+		var sheeps = new List<SheepInfo>();
+		if (load) {
+			if (!TryLoad(out var err, out sheeps)) {
+				popup.Show(err);
+				startButton.interactable = true;
+				return;
+			}
+		}
+		
 		field.size = (int) fieldSize;
 		foodCtrl.Init(field);
-		sheepCtrl.Spawn((int) population, sheepSpeed, false);
+		
+		if (load) {
+			foreach (var s in sheeps) {
+				sheepCtrl.SpawnAt(s.x, s.z, s.foodX, s.foodZ, sheepSpeed);
+			}
+		} else {
+			sheepCtrl.SpawnBunch((int) population, sheepSpeed);
+		}
+		
 		particlePool.Init((int) population);
 		mainMenu.SetActive(false);
 		HUD.SetActive(true);
 		mainCamera.on = true;
 		mainCamera.Init(field.bounds);
 		SetSimulationSpeed(1f);
+	}
+	
+	public void PauseSave() {
+		saveButton.interactable = false;
+		SetSimulationSpeed(0f);
+		Save();
+		saveButton.interactable = true;
+	}
+	
+	void Save() {
+		/* not writing right away to reduce the chance of file corruption */
+		var sb = new StringBuilder();
+		sb.Append($"{fieldSize} {population} {sheepSpeed}\n");
+		var sheeps = sheepCtrl.GetComponentsInChildren<Sheep>();
+		foreach (var sheep in sheeps) {
+			var t = sheep.transform;
+			var food = sheep.food.transform;
+			sb.Append($"{t.position.x} {t.position.z} {food.position.x} {food.position.z}\n");
+		}
+
+		using StreamWriter sw = File.CreateText(SAVE_FILE);
+		sw.Write(sb.ToString());
+		popup.Show("Done!");
+	}
+	
+	bool TryLoad(out string err, out List<SheepInfo> sheeps) {
+		sheeps = new List<SheepInfo>();
+		
+		using StreamReader sr = File.OpenText(SAVE_FILE);
+		var s = sr.ReadLine();
+		if (s == null) {
+			err = "Can't read from the file.";
+			return false;
+		}
+		
+		var subs = s.Split(' ');
+		if (subs.Length != 3) {
+			err = "Invalid header.";
+			return false;
+		}
+		
+		float[] vals;
+		if (!ParseFloats(subs, out vals)) {
+			err = "Invalid header.";
+			return false;
+		}
+		
+		fieldSize = vals[0];
+		population = vals[1];
+		sheepSpeed = vals[2];
+		
+		while ((s = sr.ReadLine()) != null) {
+			subs = s.Split(' ');
+			if (subs.Length != 4) continue;
+			
+			if (!ParseFloats(subs, out vals)) continue;
+			sheeps.Add(new SheepInfo(vals[0], vals[1], vals[2], vals[3]));
+		}
+		
+		err = "done";
+		return true;
+	}
+	
+	bool ParseFloats(string[] ss, out float[] fs) {
+		fs = new float[ss.Length];
+		for (var i = 0; i < ss.Length; ++i) {
+			if (!float.TryParse(ss[i], out var val)) {
+				return false;
+			}
+			fs[i] = val;
+		}
+		return true;
 	}
 }

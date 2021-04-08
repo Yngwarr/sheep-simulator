@@ -31,4 +31,10 @@ public class FoodController : GameComponent
 
 		food.transform.position = point;
 	}
+	
+	public void Spawn(float x, float z, Food food) {
+		var pos = new Vector3(x, food.transform.position.y, z);
+		food.transform.position = pos;
+		grid.Set(pos, true);
+	}
 }

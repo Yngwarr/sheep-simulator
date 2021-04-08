@@ -14,16 +14,27 @@ public class SheepController : GameComponent
 	[NotNull] public FoodController foodCtrl;
 	[NotNull] public Field field;
 
-	public void Spawn(int amount, float speed, bool collideWhenInvisible) {
-		for (int i = 0; i < amount; ++i) {
-			Spawn(speed, collideWhenInvisible);
+	public void SpawnBunch(int amount, float speed) {
+		for (var i = 0; i < amount; ++i) {
+			var sheep = Spawn(speed);
+			foodCtrl.Respawn(sheep.food, sheep.transform.position, sheep.speed);
 		}
 	}
 	
-	void Spawn(float speed, bool collideWhenInvisible) {
-		var x = Random.Range(field.bounds.min.x, field.bounds.max.x);
-		var z = Random.Range(field.bounds.min.z, field.bounds.max.z);
-		
+	Sheep Spawn(float speed) {
+		return SpawnAt(
+			Random.Range(field.bounds.min.x, field.bounds.max.x),
+			Random.Range(field.bounds.min.z, field.bounds.max.z),
+			speed
+		);
+	}
+	
+	public void SpawnAt(float x, float z, float foodX, float foodZ, float speed) {
+		var sheep = SpawnAt(x, z, speed);
+		foodCtrl.Spawn(foodX, foodZ, sheep.food);
+	}
+	
+	Sheep SpawnAt(float x, float z, float speed) {
 		var sheepObj = Instantiate(prefabSheep, transform);
 		var foodObj = Instantiate(prefabFood, foodCtrl.transform);
 		
@@ -33,8 +44,7 @@ public class SheepController : GameComponent
 		sheep.transform.position = new Vector3(x, HEIGHT, z);
 		sheep.food = food;
 		sheep.speed = speed;
-		sheep.collideWhenInvisible = collideWhenInvisible;
 		food.transform.position = Vector3.up * HEIGHT;
-		foodCtrl.Respawn(food, sheep.transform.position, sheep.speed);
+		return sheep;
 	}
 }

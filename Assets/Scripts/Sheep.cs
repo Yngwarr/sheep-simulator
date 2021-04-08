@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class Sheep : GameComponent {
     public Food food;
     public float speed = 5f;
-    public bool collideWhenInvisible = true;
     
     Rigidbody rigid;
     int defaultLayer;
@@ -44,12 +43,10 @@ public class Sheep : GameComponent {
     }
 
     void OnBecameVisible() {
-	    if (collideWhenInvisible) return;
 		gameObject.layer = defaultLayer;
     }
 
     void OnBecameInvisible() {
-	    if (collideWhenInvisible) return;
 		gameObject.layer = invisibleLayer;
     }
 }
