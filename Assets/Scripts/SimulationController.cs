@@ -12,6 +12,7 @@ public class SimulationController : GameComponent
 	[NotNull] public EnhancedSlider sheepSpeedSlider;
 	[NotNull] public GameObject mainMenu;
 	[NotNull] public GameObject HUD;
+	[NotNull] public EnhancedSlider simSpeedSlider;
 	
 	[Header("Controllers")]
 	[NotNull] public Field field;
@@ -43,6 +44,26 @@ public class SimulationController : GameComponent
 		SetSimulationSpeed(0f);
 	}
 	
+	void Update() {
+		var speedInput = Input.GetAxisRaw("SimulationSpeed");
+		var updateSlider = false;
+		
+		if (!Mathf.Approximately(speedInput, 0f)) {
+			var delta = Input.GetButton("AltSpeed") ? .5f : .1f;
+			AddSimulationSpeed(speedInput * delta);
+			updateSlider = true;
+		}
+		
+		if (Input.GetButtonDown("Pause")) {
+			SetSimulationSpeed(Time.timeScale > 0f ? 0f : 1f);
+			updateSlider = true;
+		}
+		
+		if (updateSlider) {
+			simSpeedSlider.value = Time.timeScale;
+		}
+	}
+	
 	void SetMaxPopulation(float n) {
 		populationSlider.maxValue = Mathf.Ceil(n * n / 2f);
 	}
@@ -57,6 +78,11 @@ public class SimulationController : GameComponent
 		Time.fixedDeltaTime = defaultDeltaTime * multiplier;
 	}
 	
+	public void AddSimulationSpeed(float delta) {
+		var scale = Time.timeScale + delta;
+		SetSimulationSpeed(scale <= 0f ? 0f : scale);
+	}
+
 	public void StartSimulation() {
 		field.size = (int) fieldSize;
 		foodCtrl.Init(field);
