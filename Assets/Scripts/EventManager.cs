@@ -15,5 +15,5 @@ public class EventManager
     }
 
     // TODO make a generic version with dynamically added events
-    public UnityEvent<Vector3> foodEaten = new UnityEvent<Vector3>();
+    public UnityEvent<Vector3, bool> foodEaten = new UnityEvent<Vector3, bool>();
 }

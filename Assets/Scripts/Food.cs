@@ -6,9 +6,11 @@ using Random = UnityEngine.Random;
 
 public class Food : GameComponent {
 	FoodController ctrl;
+	Renderer _renderer;
 
 	void Start() {
 		ctrl = GetComponentInParent<FoodController>();
+		_renderer = GetComponent<Renderer>();
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -20,7 +22,7 @@ public class Food : GameComponent {
     }
 	
 	public void Respawn(Vector3 sheepPos, float sheepSpeed) {
-	    EventManager.Get().foodEaten.Invoke(transform.position);
+	    EventManager.Get().foodEaten.Invoke(transform.position, _renderer.isVisible);
 		ctrl.Respawn(this, sheepPos, sheepSpeed);
 	}
 }

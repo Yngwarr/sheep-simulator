@@ -29,8 +29,8 @@ public class ParticlePool : GameComponent
 		return particle;
 	}
 	
-	void Spawn(Vector3 position) {
-		if (!on) return;
+	void Spawn(Vector3 position, bool isVisible) {
+		if (!on || !isVisible) return;
 		ParticleSystem particle;
 		if (free.Count > 0) {
 			particle = free.Last();
