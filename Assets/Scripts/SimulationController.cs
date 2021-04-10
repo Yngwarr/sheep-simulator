@@ -34,7 +34,6 @@ public class SimulationController : GameComponent
 	[NotNull] public MovingCamera mainCamera;
 	
 	float defaultDeltaTime;
-	float popupTime = 0f;
 	float lastTime;
 	
 	public float fieldSize {

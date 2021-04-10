@@ -37,13 +37,12 @@ public class MovingCamera : MonoBehaviour
 	}
 	
 	void Start() {
-		lastTime = Time.realtimeSinceStartup;
+		lastTime = Time.unscaledTime;
 	}
 	
 	void Update() {
-		var now = Time.realtimeSinceStartup;
-		var dt = now - lastTime;
-		lastTime = now;
+		var dt = Time.unscaledTime - lastTime;
+		lastTime = Time.unscaledTime;
 		
 		if (!on) return;
 		Vector3 input = BoundPosition(

@@ -15,12 +15,13 @@ public class Popup : GameComponent
 
     void Update() {
 		var dt = Time.unscaledTime - lastTime;
+		lastTime = Time.unscaledTime;
+		
 		if (timer > 0f) {
 			timer -= dt;
 		} else {
 			gameObject.SetActive(false);
 		}
-		lastTime = Time.unscaledTime;
     }
     
     public void Show(string msg, float t = 3f) {

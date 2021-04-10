@@ -88,7 +88,7 @@ public class FoodGrid
 			point.x -= num;
 			point.y++;
 		}
-		Debug.Log($"Couldn't find a free point around {center} in radius of {radius}. :(");
+		/* couldn't find any free place around the point */
 		return center;
 	} 
 	
@@ -103,7 +103,6 @@ public class FoodGrid
 			}
 		}
 		/* fallback in case we're feeling unlucky */
-		Debug.Log("Fallback mode on.");
 		return FreeInCircle(center, radius);
 	}
 }
